@@ -2,7 +2,7 @@
 
 
     // Example queryURL for Giphy API
-    var topics = ["Spirited Away", "Howl's Moving Castle", "My Neighbor Totoro", "Princess Mononoke", "Kiki's Delivery Service", "The Wind Rises", "Castle in the Sky"];
+    var topics = ["My Neighbor Totoro", "Howl's Moving Castle", "Spirited Away", "Princess Mononoke", "Kiki's Delivery Service", "Castle in the Sky"];
 
     //var queryStr;
 
@@ -72,7 +72,7 @@
 
             newDiv.append(newDivImg, newDivRating);
             newDiv.addClass("card gif-div");
-            /* newDiv.addClass("d-flex"); */
+            //newDiv.addClass("d-flex"); 
 
             console.log("Outside of event listener " + htmlGif);
 
@@ -150,7 +150,7 @@
           // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
           var a = $("<button>");
           // Adds a class of movie to our button
-          a.addClass("gifka");
+          a.addClass("gifka btn btn-success ml-3 mb-3");
           // Added a data-attribute
           a.attr("data-name", topics[i]);
           // Provided the initial button text
