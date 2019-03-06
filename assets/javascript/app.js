@@ -2,8 +2,9 @@
 
 
     // Example queryURL for Giphy API
-    var topics = ["My Neighbor Totoro", "Howl's Moving Castle", "Spirited Away", "Princess Mononoke", "Kiki's Delivery Service", "Castle in the Sky"];
+    var topics = ["Howl's Moving Castle", "Spirited Away", "My Neighbor Totoro", "Princess Mononoke", "Kiki's Delivery Service", "Castle in the Sky"];
 
+    var ackn = "This data is provided by the GIPHY API";
     //var queryStr;
 
 
@@ -30,7 +31,13 @@
 
         console.log(queryURL);
 
-        var count = 0;
+       /*  var count = 0;
+        var countRows = 1; */
+        var countCards = 0;
+       /*  var trStart= "<table class='table'><tbody id='table-body'><tr>";
+        var trEnd= "</tr></tbody></table>";
+        var markup = ""; */
+
 
         // Creates AJAX call for the specific movie button being clicked
         $.ajax({
@@ -38,8 +45,17 @@
           method: "GET"
         }).then(function(response) {
 
-          $("#gif-view").empty();
+          //$("#gif-view").empty();
+          //$(".mt-3 d-flex flex-row p-2").empty();
+          $("#gif-view0").empty();
+          $("#gif-view1").empty();
+          $("#gif-view2").empty();
+          $("#gif-view3").empty();
+          $("#gif-view4").empty();
           console.log(response);
+
+          //markup = trStart;
+
           for(var j = 0; j < 10; j++) {
             var rating = response.data[j].rating;
             console.log(rating);
@@ -54,11 +70,18 @@
             var newDivRating = $("<div>");
             var newDiv = $("<div>");
 
-            
-            var htmlRating = $("<h6>Rating: " + rating  + "</h6></br>"); 
-            newDivRating.html(htmlRating);   
+            //create h6 html element for rating
+            var htmlRating = $("<h6>Rating: " + rating  + "</h6><hr>"); 
+
+            var giphyApi = $("<p>" + ackn + "</p>");
+            giphyApi.addClass("small-txt");
+
+            //make newDivRating div a card text bootstrap element
+            newDivRating.html(htmlRating);
+            newDivRating.append(giphyApi);   
             newDivRating.addClass("text-class card-text");    
       
+            //create img html element
             var htmlGif = $("<img>");
             htmlGif.attr("src", imgStillURL); 
             htmlGif.attr("id", imgURL);
@@ -67,12 +90,17 @@
             //htmlGif.method()
             //newDivImg.addClass("img-class");
 
+            //make newDivImg div a bootstrap card body
             newDivImg.html(htmlGif);
             newDivImg.addClass("card-body");
 
+            //append both divs got card text and card body to a newDiv
             newDiv.append(newDivImg, newDivRating);
             newDiv.addClass("card gif-div");
             //newDiv.addClass("d-flex"); 
+
+
+          
 
             console.log("Outside of event listener " + htmlGif);
 
@@ -81,9 +109,9 @@
               }); */
 
             //$(document).on("click", ".img-class", function(e) {
-            $(htmlGif).on("click", function(e) {    
+            $(htmlGif).on("click", function(e) {  
+              //$(".mt-3 d-flex flex-row p-2").empty();
                 console.log(e.target);
-                //console.log("Inside event listener id: " + e.target.id);
                 console.log("Inside event listener src: " +  e.target.src);
                 console.log("Inside event listener data-name: " +   $(this).attr("data-name"));
                 console.log("Inside event listener data-still: " +   $(this).attr("data-still"));
@@ -99,14 +127,27 @@
                 }
                 //$(this).attr("src", e.target.id);
             });
- 
- 
-            $("#gif-view").append(newDiv);
+
+          
+ /* 
+            if(Math.floor(countCards/3) { */
+              console.log($("#gif-view"+ Math.floor(countCards/3)));
+              $("#gif-view"+ Math.floor(countCards/3)).append(newDiv);
+
+              countCards++;
+      /*       }
+            else if(countCards>=4 && countCards<7){
+              $("#gif-view2").append(newDiv);
+            }
+            else {
+              $("#gif-view3").append(newDiv);
+            } */
+            
             //$("#gif-view").html(newDiv);
 
           }
 
-        
+         
 
          
    /*        $(document).on("click", ".img-class", function() {
