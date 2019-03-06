@@ -15,13 +15,19 @@
     color: grey;
     font-size: 1rem;
     padding-left: 20px;
-    font-weight: 400;
+    font-family: 'Noto Sans JP', sans-serif;
 
   }
 
   .small-txt {
     color: rgb(122, 128, 126);
     font-size: 0.6rem;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+
+  .add-lbl {
+    color:#386938;
+    font-family: 'Noto Sans JP', sans-serif;
   }
 
 

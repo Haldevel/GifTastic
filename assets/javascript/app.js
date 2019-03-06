@@ -1,25 +1,10 @@
 
 
 
-    // Example queryURL for Giphy API
+    //Initial array of topics to search
     var topics = ["Howl's Moving Castle", "Spirited Away", "My Neighbor Totoro", "Princess Mononoke", "Kiki's Delivery Service", "Castle in the Sky"];
 
     var ackn = "This data is provided by the GIPHY API";
-    //var queryStr;
-
-
-    /* $("#buttons-view").on("click", function(event) {
-        event.preventDefault();
-        // This line of code will grab the input from the text
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-          }).then(function(response) {
-            console.log(response);
-          });
-      
-
-    } */
 
      // displayMovieInfo function re-renders the HTML to display the appropriate content
      function displayGif() {
@@ -34,9 +19,7 @@
        /*  var count = 0;
         var countRows = 1; */
         var countCards = 0;
-       /*  var trStart= "<table class='table'><tbody id='table-body'><tr>";
-        var trEnd= "</tr></tbody></table>";
-        var markup = ""; */
+  
 
 
         // Creates AJAX call for the specific movie button being clicked
@@ -45,8 +28,6 @@
           method: "GET"
         }).then(function(response) {
 
-          //$("#gif-view").empty();
-          //$(".mt-3 d-flex flex-row p-2").empty();
           $("#gif-view0").empty();
           $("#gif-view1").empty();
           $("#gif-view2").empty();
@@ -54,7 +35,6 @@
           $("#gif-view4").empty();
           console.log(response);
 
-          //markup = trStart;
 
           for(var j = 0; j < 10; j++) {
             var rating = response.data[j].rating;
@@ -111,7 +91,7 @@
             //$(document).on("click", ".img-class", function(e) {
             $(htmlGif).on("click", function(e) {  
               //$(".mt-3 d-flex flex-row p-2").empty();
-                console.log(e.target);
+                //console.log(e.target);
                 console.log("Inside event listener src: " +  e.target.src);
                 console.log("Inside event listener data-name: " +   $(this).attr("data-name"));
                 console.log("Inside event listener data-still: " +   $(this).attr("data-still"));
@@ -129,39 +109,18 @@
             });
 
           
- /* 
-            if(Math.floor(countCards/3) { */
-              console.log($("#gif-view"+ Math.floor(countCards/3)));
+              //calulates what row number should the card be appended to if the number of the cards on a row is 3
               $("#gif-view"+ Math.floor(countCards/3)).append(newDiv);
 
               countCards++;
-      /*       }
-            else if(countCards>=4 && countCards<7){
-              $("#gif-view2").append(newDiv);
-            }
-            else {
-              $("#gif-view3").append(newDiv);
-            } */
-            
-            //$("#gif-view").html(newDiv);
+    
 
           }
 
          
 
          
-   /*        $(document).on("click", ".img-class", function() {
-            console.log("Inside event listener " + imgURL);
-            console.log($(this));
-            //$(htmlGif).attr("src", imgURL);
-        }); */
 
-                
-         /*     
-          newDiv.append(toAppendRating, htmlGif);
-          $("#gif-view").html(newDiv);
-          */
-    
 
           //$("#movies-view").append(newDiv);
           // Retrieves the release year
@@ -221,14 +180,5 @@
 
     renderButtons();
 
-  
-
-      /*
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    }).then(function(response) {
-      console.log(response);
-    }); */
 
 
