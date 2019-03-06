@@ -173,6 +173,22 @@
         else return "incorrect";
     }
 
+    // This function handles events where the add a Movie button is clicked
+    $("#add-gif").on("click", function(event) {
+      event.preventDefault();
+
+      //Grab the input from the textbox
+      var movie = $("#gif-input").val().trim();
+
+      // The Miyazaki's movie from the textbox is added to our array
+      topics.push(movie);
+
+      document.getElementById("gif-input").value = "";
+
+      // Calling renderButtons which handles the processing of our movie array
+      renderButtons();
+    });
+
     // Adding click event listeners to all elements with a class of "movie"
     $(document).on("click", ".gifka", displayGif);
 
