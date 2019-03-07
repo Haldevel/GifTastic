@@ -66,7 +66,7 @@ function displayGif() {
       newDivImg.html(htmlGif);
       newDivImg.addClass("card-body");
 
-      //append both divs got card text and card body to a newDiv
+      //append both divs for card text and card body to a newDiv
       newDiv.append(newDivImg, newDivRating);
       newDiv.addClass("card gif-div");
 
@@ -86,7 +86,7 @@ function displayGif() {
         }
       });
 
-      //calulates what row number should the card be appended to if the number of the cards on a row is 3
+      //caluculates what flex-box row number should the card be appended to if the number of the cards in a row is 3
       $("#gif-view" + Math.floor(countCards / 3)).append(newDiv);
 
       countCards++;
