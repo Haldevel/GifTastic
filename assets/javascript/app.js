@@ -4,7 +4,7 @@ var topics = ["Howl's Moving Castle", "Spirited Away", "My Neighbor Totoro", "Pr
 
 var ackn = "This data is provided by the GIPHY API";
 
-// displayMovieInfo function re-renders the HTML to display the appropriate content
+// displayGif function re-renders the HTML to display the appropriate content
 function displayGif() {
 
   var gifName = $(this).attr("data-name");
@@ -16,22 +16,20 @@ function displayGif() {
 
   var countCards = 0;
 
-
-
   // Creates AJAX call for the specific movie button being clicked
   $.ajax({
     url: queryURL,
     method: "GET"
   }).then(function (response) {
 
+    //emptying the correcponding rows
     $("#gif-view0").empty();
     $("#gif-view1").empty();
     $("#gif-view2").empty();
     $("#gif-view3").empty();
-    $("#gif-view4").empty();
-    console.log(response);
+    $("#gif-view4").empty(); 
 
-
+    //looping through the array of response.data and retrieve the urls and ratings
     for (var j = 0; j < 10; j++) {
       var rating = response.data[j].rating;
       console.log(rating);
@@ -72,15 +70,10 @@ function displayGif() {
       newDiv.append(newDivImg, newDivRating);
       newDiv.addClass("card gif-div");
 
-      console.log("Outside of event listener " + htmlGif);
-
-      //$(document).on("click", ".img-class", function(e) {
       $(htmlGif).on("click", function (e) {
-        //$(".mt-3 d-flex flex-row p-2").empty();
-        //console.log(e.target);
-        console.log("Inside event listener src: " + e.target.src);
-        console.log("Inside event listener data-name: " + $(this).attr("data-name"));
-        console.log("Inside event listener data-still: " + $(this).attr("data-still"));
+        //console.log("Inside event listener src: " + e.target.src);
+        //console.log("Inside event listener data-name: " + $(this).attr("data-name"));
+        //console.log("Inside event listener data-still: " + $(this).attr("data-still"));
         var srcStr = e.target.src;
         if (checkGif(srcStr) === "still") {
           $(this).attr("src", $(this).attr("data-name"));
@@ -113,7 +106,7 @@ function renderButtons() {
     // Then dynamicaly generates buttons for each movie in the array
     // Create the button element 
     var a = $("<button>");
-    // Adds a class of movie to our button
+    // Adds a bunch of classes to our button
     a.addClass("gifka btn btn-success ml-3 mb-3");
     // Added a data-attribute
     a.attr("data-name", topics[i]);
@@ -124,10 +117,11 @@ function renderButtons() {
   }
 }
 
+//function to check if the gif is animated or still
 function checkGif(str) {
   var arr = str.split("/");
   var last = arr.pop();
-  //var type =last.substr(0, last.indexOf('.')); 
+
   if (last === "200w_s.gif") {
     return "still";
   }
@@ -137,7 +131,7 @@ function checkGif(str) {
   else return "incorrect";
 }
 
-// This function handles events where the add a Movie button is clicked
+// This function handles events where the 'Add a Movie' button is clicked
 $("#add-gif").on("click", function (event) {
   event.preventDefault();
 
@@ -153,7 +147,7 @@ $("#add-gif").on("click", function (event) {
   renderButtons();
 });
 
-// Adding click event listeners to all elements with a class of "movie"
+// Adding click event listeners to all elements with a class of "gifka"
 $(document).on("click", ".gifka", displayGif);
 
 renderButtons();
