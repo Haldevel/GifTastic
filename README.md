@@ -6,6 +6,9 @@ The web app uses Giphy API to retrieve ten gif images of Miyazaki movies, which 
 <img src="assets/images/App_view.png">
 
 When a user clicks on each gif, the source of the image is switched to the animated version of the gif. The "Add" button and the input field allow for a user to add another movie title, and the newly added movie will be added to the current list of Miyazaki movies.  
+
+[Click to see the project](https://haldevel.github.io/GifTastic/index.html)
+
 ----------------------------------------------------------------------------------
 
 Techologies used:
